@@ -1,16 +1,16 @@
-// function play(){
-//     // hidden the home screen ...
+function play(){
+    // hidden the home screen ...
 
-//     const homeSection = document.getElementById('home-screen');
+    const homeSection = document.getElementById('home-screen');
 
-//     homeSection.classList.add('hidden');
+    homeSection.classList.add('hidden');
 
-//     // show the play ground....
+    // show the play ground....
 
-//     const playGroundSection = document.getElementById('play-ground');
+    const playGroundSection = document.getElementById('play-ground');
 
-//     playGroundSection.classList.remove('hidden');
-// }
+    playGroundSection.classList.remove('hidden');
+}
 
 function handleKeyboardKeys(event) {
     const playerPressed = event.key;
@@ -55,8 +55,13 @@ function handleKeyboardKeys(event) {
         const currentLife = parseInt(currentLifeText);
          const newLife = currentLife - 1;
          currentLifeElement.innerText =newLife;
+         if(newLife === 0){
+            gameOver();
+        }
+
 
     }
+   
 }
 // captured keyboard  key press by call back function...
 
@@ -75,8 +80,15 @@ function continueGame() {
 
 function play() {
     hideElementById('home-screen');
+    hideElementById('final-score');
     showElemntById('play-ground');
+
+    setTextElementValueById('current-life', 3);
     continueGame();
+}
+function gameOver(){
+    hideElementById('play-ground');
+    showElemntById('final-score');
 }
 
 
